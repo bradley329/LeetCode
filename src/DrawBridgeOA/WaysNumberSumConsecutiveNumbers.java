@@ -2,6 +2,33 @@ package DrawBridgeOA;
 
 // length must be at least two
 public class WaysNumberSumConsecutiveNumbers {
+	public static int best(int n) {
+		//∑÷∆Ê≈º£°
+		int count = 0;
+		int k = 2;
+		while(k <= n/2) {
+			if (k % 2 != 0) {
+				if (n % k == 0) {
+					int mid = n / k;
+					int low = mid - k/2;
+					if (low > 0) {
+						count++;
+					}
+				}
+			} else {
+				if (n % k == k / 2) {
+					int mid = n / k;
+					int low = mid - k/2 + 1;
+					if (low > 0) {
+						count++;
+					}
+				}
+			}
+			k++;
+		}
+		return count;
+	}
+	
 	public static int fancy(int n) {
 		// constraint on values of L gives us the 
         // time Complexity as O(N^0.5)
@@ -39,8 +66,9 @@ public class WaysNumberSumConsecutiveNumbers {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(naive(15));
-		System.out.println(fancy(15));
+		System.out.println(naive(10));
+		System.out.println(fancy(10));
+		System.out.println(best(10));
 	}
 
 }
