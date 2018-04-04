@@ -38,11 +38,13 @@ public class CountingGroups {
 		// below is something I've always been confused about:
 		// the predication is sequential so grid[i][j] will not be overflowed?
 	    if (i < 0 || j < 0 || i >= m || j >= n || grid[i][j] != '1') return;
-	    count++;
-	    grid[i][j] = '0';
-	    DFSMarking(grid, i + 1, j);
-	    DFSMarking(grid, i - 1, j);
-	    DFSMarking(grid, i, j + 1);
-	    DFSMarking(grid, i, j - 1);
+	    if (grid[i][j] == '1') {
+			count++;
+			grid[i][j] = '0';
+			DFSMarking(grid, i + 1, j);
+			DFSMarking(grid, i - 1, j);
+			DFSMarking(grid, i, j + 1);
+			DFSMarking(grid, i, j - 1);
+		}
 	}
 }
