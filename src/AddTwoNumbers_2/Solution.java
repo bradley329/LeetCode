@@ -1,0 +1,32 @@
+package AddTwoNumbers_2;
+
+import SinglyLinkedList.ListNode;
+
+public class Solution {
+  public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    int carry = 0;
+    ListNode dummy = new ListNode(0), tail = dummy;
+
+    // iterate two list, add each position until 2 lists are finished && carry equals to 0
+    while (l1 != null || l2 != null) {
+      // is number1 finished?
+      int add1 = l1 != null ? l1.val : 0;
+      // is number2 finished?
+      int add2 = l2 != null ? l2.val : 0;
+      int sum = add1 + add2 + carry;
+      carry = sum / 10;
+      ListNode newNode = new ListNode(sum % 10);
+      tail.next = newNode;
+      tail = newNode;
+
+      if (l1 != null)
+        l1 = l1.next;
+      if (l2 != null)
+        l2 = l2.next;
+    }
+    if (carry > 0) {
+      tail.next = new ListNode(carry);
+    }
+    return dummy.next;
+  }
+}
