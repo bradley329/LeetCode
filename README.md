@@ -1,2 +1,2 @@
-# LeetCode_2018_WINTER
+# LeetCode
 Solved LeetCode algorithm problems
